@@ -1,0 +1,48 @@
+h1,h2 {
+    text-align: center;
+}
+.my-div1 {
+    /* background-color: aqua; */
+    display: flex;
+}
+.my-form{
+    align-content: center;
+    background-color: rgb(189, 214, 224);
+    width: 60%;
+    align-items: center;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+.input-div{
+    margin: 20px auto;
+   display: flex;
+   justify-content: center;
+   align-content: center;
+}
+.my-btn {
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#errMsg,#errAtm {
+    text-align: center;
+}
+.atm-form{
+    
+    background-color: rgb(189, 214, 224);
+    width: 60%;
+    height: 50px;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+.amt-btn {
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.atm-div{
+    margin: 20px auto;
+   display: flex;
+   justify-content: center;
+   align-content: center;
+}
