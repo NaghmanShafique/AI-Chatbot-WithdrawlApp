@@ -47,6 +47,14 @@ function withdraw() {
     } else {
         document.querySelector("#errAtm").innerHTML = '';
         
+        if (userAmount <= cardDailyLimit) {
+            cardDailyLimit = cardDailyLimit - userAmount;
+            document.querySelector("#daily-limit").innerHTML = 'Card Daily Limit : '+cardDailyLimit;
+        } else if (userAmount > cardDailyLimit) {
+            document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount is greater then your daily Limit amount '+cardDailyLimit+'.';
+            return
+        }
+        
         if (userAmount <= moneyBox) {
             moneyBox = moneyBox - userAmount;
             document.querySelector("#money-box").innerHTML = 'Money box Balance : '+moneyBox;
@@ -55,13 +63,7 @@ function withdraw() {
             return;
         }  
         
-        if (userAmount <= cardDailyLimit) {
-            cardDailyLimit = cardDailyLimit - userAmount;
-            document.querySelector("#daily-limit").innerHTML = 'Card Daily Limit : '+cardDailyLimit;
-        } else if (userAmount > cardDailyLimit) {
-            document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount is greater then your daily Limit amount '+cardDailyLimit+'.';
-            return
-        }
+        
 
         if (userAmount <= accountBalance) {
             accountBalance = accountBalance - userAmount;
