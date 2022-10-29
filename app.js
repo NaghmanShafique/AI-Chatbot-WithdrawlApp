@@ -46,24 +46,47 @@ function withdraw() {
         return;
     } else {
         document.querySelector("#errAtm").innerHTML = '';
-        moneyBox = moneyBox - userAmount
-        cardDailyLimit = cardDailyLimit - userAmount;
-        accountBalance = accountBalance - userAmount;
-        console.log("Money Box",moneyBox);
-        console.log("Daily Card Limit",cardDailyLimit);
-        console.log("Account",accountBalance);
-    }
+        
+        if (userAmount <= moneyBox) {
+            moneyBox = moneyBox - userAmount;
+            document.querySelector("#money-box").innerHTML = 'Money box Balance : '+moneyBox;
+        } else if (userAmount > moneyBox) {
+            document.querySelector("#errAtm").innerHTML = 'This ATM does not have enough Money. Please try Smaller Amount.';
+            return;
+        }  
+        
+        if (userAmount <= cardDailyLimit) {
+            cardDailyLimit = cardDailyLimit - userAmount;
+            document.querySelector("#daily-limit").innerHTML = 'Card Daily Limit : '+cardDailyLimit;
+        } else if (userAmount > cardDailyLimit) {
+            document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount is greater then your daily Limit amount '+cardDailyLimit+'.';
+            return
+        }
 
+        if (userAmount <= accountBalance) {
+            accountBalance = accountBalance - userAmount;
+            document.querySelector("#act-bal").innerHTML = 'Account Balance : '+accountBalance;
+        } else if (userAmount > accountBalance) {
+            document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount Amount is greater then your daily Limit amount '+accountBalance+'.';
+            return;
+        }    
+        
+    }
+    console.log("Money Box",moneyBox);
+    console.log("Daily Card Limit",cardDailyLimit);
+    console.log("Account",accountBalance);
     console.log(userAmount);
 
-    if (userAmount > moneyBox) {
-        document.querySelector("#errAtm").innerHTML = 'This ATM does not have enough Money. Please try Smaller Amount.';
-        return
-    } else if (userAmount > cardDailyLimit) {
-        document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount is greater then your daily Limit amount '+cardDailyLimit+'.';
-        return
-    } else if (userAmount > accountBalance) {
-        document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount Amount is greater then your daily Limit amount '+accountBalance+'.';
-        return;
-    } 
+
+    // if (userAmount > moneyBox) {
+    //     document.querySelector("#errAtm").innerHTML = 'This ATM does not have enough Money. Please try Smaller Amount.';
+    //     return
+    // } else 
+    // if (userAmount > cardDailyLimit) {
+    //     document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount is greater then your daily Limit amount '+cardDailyLimit+'.';
+    //     return
+    // } else if (userAmount > accountBalance) {
+    //     document.querySelector("#errAtm").innerHTML = 'Withdrawl Amount Amount is greater then your daily Limit amount '+accountBalance+'.';
+    //     return;
+    // } 
 }
